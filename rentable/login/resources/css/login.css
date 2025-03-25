@@ -1,6 +1,35 @@
 /* Patternfly CSS places a "bg-login.jpg" as the background on this ".login-pf" class.
    This clashes with the "keycloak-bg.png' background defined on the body below.
    Therefore the Patternfly background must be set to none. */
+
+.rentable-logo h1 {
+    text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 40px;
+
+    color: #000000;
+}
+#kc-info-message p {
+    text-align: center;
+}
+#kc-info-message p a {
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    display:inline-block;
+    margin: 10px 10px;
+    background-color:#3366ff;
+    color:#ffffff;
+    border-radius:4px;
+    font-weight:600;
+    width:75%;
+    padding:10px 10px;
+
+}
+
+
 .login-pf {
     background: none;
 }
@@ -34,6 +63,11 @@ h1#kc-page-title {
     font-size: 24px;
     color: #333;
     text-align: center;
+}
+
+#kc-locale {
+    text-align: right;
+    width: 100%;
 }
 
 #kc-locale ul {
