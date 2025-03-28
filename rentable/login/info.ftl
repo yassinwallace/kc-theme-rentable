@@ -45,13 +45,13 @@
         
         <#-- Email verification success screen -->
         <#if message.summary == msg("accountUpdatedMessage")>
-            <p><a href="http://localhost:4200/login" id="back-to-app-link" class="back-to-app-button">${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
+            <#-- <p><a href="http://localhost:4200" id="back-to-app-link" class="back-to-app-button">${kcSanitize(msg("backToApplication"))?no_esc}</a></p> -->
             <p id="redirect-message" style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">Redirecting in <span id="countdown">3</span> seconds...</p>
             <script type="text/javascript">
                 // Auto-redirect after 3 seconds
                 let count = 3;
                 const countdownElement = document.getElementById('countdown');
-                const redirectUrl = "http://localhost:4200/login";
+                const redirectUrl = "http://localhost:4200";
                 
                 const countdownInterval = setInterval(function() {
                     count--;
