@@ -11,6 +11,8 @@
     <#elseif section = "form">
     <div id="kc-info-message">
         <p class="instruction">${message.summary}<#if requiredActions??><#list requiredActions>: <b><#items as reqActionItem>${kcSanitize(msg("requiredAction.${reqActionItem}"))?no_esc}<#sep>, </#items></b></#list><#else></#if></p>
+        
+        <#-- Email verification success screen -->
         <#if message.summary == msg("accountUpdatedMessage")>
             <p><a href="http://localhost:4200/login" id="back-to-app-link" class="back-to-app-button">${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
             <p id="redirect-message" style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">Redirecting in <span id="countdown">3</span> seconds...</p>
@@ -31,11 +33,41 @@
                 }, 1000);
             </script>
         </#if>
+        
+        <#-- Email verification confirmation screen - identified by actionUri with action-token -->
+        <#if actionUri?has_content && actionUri?contains("action-token")>
+            <p id="auto-click-message" style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">Automatically verifying in <span id="verify-countdown">3</span> seconds...</p>
+            <script type="text/javascript">
+                // Function to find and click the verification link
+                window.onload = function() {
+                    let count = 3;
+                    const countdownElement = document.getElementById('verify-countdown');
+                    
+                    // Find the verification link - it's inside the email_verify_link_start/end comments
+                    const verifyLink = document.querySelector('a[href*="action-token"]');
+                    
+                    if (verifyLink) {
+                        const countdownInterval = setInterval(function() {
+                            count--;
+                            countdownElement.textContent = count;
+                            
+                            if (count <= 0) {
+                                clearInterval(countdownInterval);
+                                // Click the verification link
+                                verifyLink.click();
+                            }
+                        }, 1000);
+                    } else {
+                        // If link not found, hide the message
+                        document.getElementById('auto-click-message').style.display = 'none';
+                    }
+                };
+            </script>
+        </#if>
+
         <#if skipLink??>
         <#-- If skipLink is present, then the page is an error page that can be skipped -->
         <#else>
-
-
             <#if pageRedirectUri?has_content>
                 <p><a href="${pageRedirectUri}">${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
             <#elseif actionUri?has_content>
@@ -43,7 +75,6 @@
             <#elseif (client.baseUrl)?has_content>
                 <p><a href="${client.baseUrl}">${kcSanitize(msg("backToApplication"))?no_esc}</a></p>
             </#if>
-
         </#if>
     </div>
     </#if>
