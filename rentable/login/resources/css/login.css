@@ -498,6 +498,24 @@ div.kc-logo-text {
     font-family: "Roboto", Arial, sans-serif;
 }
 
+/* Styled back to application button */
+.back-to-app-button {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin: 10px 0px;
+    padding: 10px 15px;
+    background-color: #3366ff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 3px;
+    font-weight: 400;
+}
+
+.back-to-app-button:hover {
+    background-color: #2352fc;
+}
+
 /* Responsive adjustments */
 @media (max-width: 767px) {
     .card-pf {
