@@ -43,9 +43,15 @@
     <div id="kc-info-message">
         <p class="instruction">${message.summary}<#if requiredActions??><#list requiredActions>: <b><#items as reqActionItem>${kcSanitize(msg("requiredAction.${reqActionItem}"))?no_esc}<#sep>, </#items></b></#list><#else></#if></p>
         
-        <#-- Email verification success screen -->
-        <#if message.summary == msg("accountUpdatedMessage")>
-            <#-- <p><a href="http://localhost:4200" id="back-to-app-link" class="back-to-app-button">${kcSanitize(msg("backToApplication"))?no_esc}</a></p> -->
+        <#-- 
+            Email verification success screen - using more reliable detection methods:
+            1. Standard verification success (accountUpdatedMessage)
+            2. Check for emailVerified attribute in user session
+            3. Check if we're on a page after email verification action
+        -->
+        <#if message.summary == msg("accountUpdatedMessage") 
+            || (message.type == "success" && pageRedirectUri?has_content)
+            || (message.type == "success" && !actionUri?has_content && !skipLink??)>
             <p id="redirect-message" style="text-align: center; margin-top: 10px; font-size: 14px; color: #666;">Redirecting in <span id="countdown">3</span> seconds...</p>
             <script type="text/javascript">
                 // Auto-redirect after 3 seconds

@@ -25,22 +25,26 @@
 
 #kc-info-message p {
     text-align: center;
+    margin: 20px 0;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
 }
 
 #kc-info-message p a {
     text-decoration: none;
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 1.5;
     text-align: center;
     display: inline-block;
-    margin: 10px 10px;
-    background-color: #3366ff;
+    margin: 10px auto;
+    background-color: #4169E1;
     color: #ffffff;
     border-radius: 4px;
-    font-weight: 600;
-    width: 75%;
-    padding: 10px 10px;
+    width: 100%;
+    max-width: 250px;
+    padding: 12px 20px;
 }
 
 #kc-info-message p a:hover {
@@ -63,16 +67,19 @@ textarea.pf-c-form-control {
 }
 
 .pf-c-alert__title {
-    font-size: var(--pf-global--FontSize--xs);
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
 }
 
 p.instruction {
-    margin-top: 0px;
-    font-size: 18px;
-    font-weight: 500;
-    color: #000000;
+    margin: 20px 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #555;
     text-align: center;
     font-family: "Roboto", Arial, sans-serif;
+    line-height: 1.5;
 }
 
 .pf-c-button.pf-m-control {
@@ -498,22 +505,34 @@ div.kc-logo-text {
     font-family: "Roboto", Arial, sans-serif;
 }
 
+.alert-warning {
+    background-color: #f8f9fa;
+    border-color: #e1e5eb;
+    border-left: 4px solid #4169E1;
+    color: #333;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+
 /* Styled back to application button */
 .back-to-app-button {
     display: inline-block;
     width: 100%;
+    max-width: 250px;
     text-align: center;
-    margin: 10px 0px;
-    padding: 10px 15px;
-    background-color: #3366ff;
+    margin: 20px auto;
+    padding: 12px 20px;
+    background-color: #4169E1;
     color: #ffffff;
     text-decoration: none;
-    border-radius: 3px;
-    font-weight: 400;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 16px;
 }
 
 .back-to-app-button:hover {
-    background-color: #2352fc;
+    background-color: #3355cc;
 }
 
 /* Responsive adjustments */
