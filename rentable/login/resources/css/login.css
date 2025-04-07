@@ -550,3 +550,25 @@ div.kc-logo-text {
         font-family: "Roboto", Arial, sans-serif;
     }
 }
+
+/* Hide "Try Another Way" link */
+#try-another-way {
+    display: none !important;
+}
+
+/* Hide instruction3 in login-idp-link-email.ftl */
+#instruction3 {
+    display: none !important;
+}
+
+/* Hide "Review Profile" button in login-idp-link-confirm.ftl */
+#updateProfile, 
+button[name="submitAction"][value="updateProfile"],
+button[id="updateProfile"] {
+    display: none !important;
+}
+
+/* Also hide its container div to remove the extra space */
+#kc-form-buttons div:has(button[id="updateProfile"]) {
+    display: none !important;
+}
